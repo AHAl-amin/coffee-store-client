@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
-const CoffeeCard = ({ coffee }) => {
-    const { _id, name, Quantity, Supplier, Taste, Category, Details, PhotoURL } = coffee;
+const CoffeeCard = ({ coffee ,coffees,setCoffees}) => {
+    const { _id, name, Quantity, Supplier, Taste,  PhotoURL } = coffee;
     // console.log(PhotoURL)
     const handleDelete = _id => {
         console.log(_id)
@@ -36,6 +36,8 @@ const CoffeeCard = ({ coffee }) => {
                                 text: "Your coffee has been deleted.",
                                 icon: "success"
                             });
+                            const remaining = coffees.filter(cof => cof._id !== _id)
+                            setCoffees(remaining)
                         }
                     })
 
@@ -46,9 +48,9 @@ const CoffeeCard = ({ coffee }) => {
     }
     return (
         <div>
-            <div className="card card-side bg-base-100 shadow-xl">
+            <div className="card card-side bg-base-100 shadow-xl m-10">
                 <div className="w-2/5">
-                    <figure><img src={PhotoURL} alt="Movie" /></figure>
+                    <figure><img className="h-28 " src={PhotoURL} alt="Movie" /></figure>
                 </div>
                 <div className="flex justify-between w-4/5">
                     <div>
