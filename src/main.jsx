@@ -12,12 +12,13 @@ import UpdateCoffee from './componante/UpdateCoffee.jsx';
 import SignUp from './componante/SignUp.jsx';
 import SignIn from './componante/SignIn.jsx';
 import AuthProvider from './providers/AuthProvider.jsx';
+import Users from './componante/Users.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
-    loader: () => fetch('http://localhost:5000/coffee')
+    loader: () => fetch('https://coffee-store-server-sable-one.vercel.app/coffee')
   },
   {
     path: "/addcoffee",
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
   {
     path: "/updateCoffee/:id",
     element: <UpdateCoffee></UpdateCoffee>,
-    loader: ({ params }) => fetch(`http://localhost:5000/coffee/${params.id}`)
+    loader: ({ params }) => fetch(`https://coffee-store-server-sable-one.vercel.app/coffee/${params.id}`)
   },
   {
     path: "/signup",
@@ -35,6 +36,11 @@ const router = createBrowserRouter([
   {
     path: "/signin",
     element: <SignIn></SignIn>
+  },
+  {
+    path:"/users",
+    element:<Users></Users>,
+    loader:()=>fetch('https://coffee-store-server-sable-one.vercel.app/user')
   }
 ]);
 
